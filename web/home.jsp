@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="automoveis.jsp">Automovel</a>
+        <a href="VEICULO/listar.jsp">Listar Automovel</a>
+        <a href="VEICULO/cadastar.jsp">Cadastar Automovel</a>
     </body>
 </html>

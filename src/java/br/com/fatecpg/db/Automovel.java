@@ -8,51 +8,47 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Automovel {
-    private int id_automovel;
+    private long id_automovel;
     private String placa;
+    private String marca;
     private String modelo;
     private String cor;
-    private Float preco;
+    private Double preco;
 
     public static ArrayList<Automovel> getAutomoveis() throws Exception {
-        ArrayList<Automovel> list = new ArrayList<>();
-        Class.forName("org.apache.derby.jdbc.ClientDriver");
-        String url = "jdbc:derby://localhost:1527/concessionariaDB";
-        String user = "grupo05", pass = "12345";
-        Connection grupo05Con = DriverManager.getConnection(url, user, pass);
-        Statement automovelStmt = grupo05Con.createStatement();
-        String SQL = "SELECT * FROM automoveis";
-        ResultSet automovelsRs = automovelStmt.executeQuery(SQL);
-        while(automovelsRs.next()){
-            int id_automovel = automovelsRs.getInt("id_automovel");
-            String placa = automovelsRs.getString("placa");
-            String modelo = automovelsRs.getString("modelo");
-            String cor = automovelsRs.getString("cor");
-            Float preco = automovelsRs.getFloat("preco");
-            
-            Automovel c = new Automovel(id_automovel, placa, modelo, cor, preco);
-            list.add(c);
-
-        }
-        automovelStmt.close();
-        grupo05Con.close();
-        return list;
+        ArrayList<Automovel> automovel = new ArrayList<>();
+        String SQL = "SELECT * FROM automoveis";        
+        ArrayList<Object[]> list = DatabaseConncector.getQuery(SQL, new Object[]{});
+        for(int i = 0; i < list.size(); i++){
+            Object row[] = list.get(i);
+            Automovel a = new Automovel(
+                    (long) row[0],
+                    (String) row[1],
+                    (String) row[2],
+                    (String) row[3],
+                    (String) row[4],
+                    (Double) row[5]);
+                    
+            automovel.add(a);  
+        }  
+        return automovel;  
     }
 
-    public Automovel(int id_automovel, String placa, String modelo, String cor, Float preco) {
+    public Automovel(long id_automovel, String placa, String marca, String modelo, String cor, Double preco) {
         this.id_automovel = id_automovel;
         this.placa = placa;
+        this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
         this.preco = preco;
     }
     
-
-    public int getId_automovel() {
+    
+    public long getId_automovel() {
         return id_automovel;
     }
 
-    public void setId_automovel(int id_automovel) {
+    public void setId_automovel(long id_automovel) {
         this.id_automovel = id_automovel;
     }
 
@@ -62,6 +58,13 @@ public class Automovel {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getModelo() {
@@ -80,11 +83,11 @@ public class Automovel {
         this.cor = cor;
     }
 
-    public Float getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(Float preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
    
