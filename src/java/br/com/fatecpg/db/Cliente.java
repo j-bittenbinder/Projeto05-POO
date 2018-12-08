@@ -36,6 +36,13 @@ public class Cliente {
         return cliente;  
     }
 
+    public static void removeCliente(long id) throws Exception{
+        String sql = "delete from cliente where ID_CLIENTE = ?";
+        Object parameters[] = {id};
+        
+        DatabaseConncector.execute(sql, parameters);
+    }
+    
     public static void addCliente(String nome, String cpf, String email, String telefone) throws Exception{
         String sql = "INSERT INTO cliente VALUES("
                 + "default"

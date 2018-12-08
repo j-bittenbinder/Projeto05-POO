@@ -8,10 +8,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%         
-    /*if (request.getParameter("excluir") != null) {
+    if (request.getParameter("excluir") != null) {
         long id = Long.parseLong(request.getParameter("id"));
-        Automovel.removeAutomovel(id);
-    } */
+        Cliente.removeCliente(id);
+    }
 %>
 <html>
     <head>
