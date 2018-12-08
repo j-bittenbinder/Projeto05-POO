@@ -33,6 +33,21 @@ public class Automovel {
         }  
         return automovel;  
     }
+    
+    public static void addAutomovel(String placa, String marca, String modelo, String cor, Double preco) throws Exception{
+        String sql = "INSERT INTO automoveis VALUES("
+                + "default"
+                + ",?"
+                + ",?"
+                + ",?"
+                + ",?"
+                + ",?)";
+        Object parameters[] = {placa, marca, modelo, cor, preco};
+        
+        DatabaseConncector.execute(sql, parameters);
+    }
+    
+    
 
     public Automovel(long id_automovel, String placa, String marca, String modelo, String cor, Double preco) {
         this.id_automovel = id_automovel;

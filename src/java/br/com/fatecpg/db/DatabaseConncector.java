@@ -41,4 +41,20 @@ public class DatabaseConncector {
         
         return list;
     }
+    
+    public static void execute (String SQL, Object[] parameters) throws Exception{
+        ArrayList<Object[]> list = new ArrayList();
+        Class.forName(DRIVER);
+        Connection grupo05Con = DriverManager.getConnection(URL, USER, PASS);
+        PreparedStatement stmt = grupo05Con.prepareStatement(SQL);
+        
+        for(int i = 0; i < parameters.length; i++){
+            stmt.setObject(i+1, parameters[i]);
+        }
+        
+        stmt.execute();
+        stmt.close(); grupo05Con.close();
+        
+      
+    }
 }

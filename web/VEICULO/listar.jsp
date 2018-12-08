@@ -22,6 +22,7 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Placa</th>
                         <th>Marca</th>
                         <th>Modelo</th>
@@ -34,6 +35,7 @@
                 <% try {
                 for(Automovel c : Automovel.getAutomoveis()){%>
                 <tr>
+                    <td><%= c.getId_automovel()%></td>
                     <td><%= c.getPlaca()%></td>
                     <td><%= c.getMarca()%></td>
                     <td><%= c.getModelo()%></td>

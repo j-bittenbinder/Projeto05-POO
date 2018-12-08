@@ -3,8 +3,26 @@
     Created on : 12/10/2018, 20:34:14
     Author     : Positivo
 --%>
+<%@page import="br.com.fatecpg.db.Automovel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+            String error = null;
+                if (request.getParameter("cadastrar") != null) {
+                    String placa = request.getParameter("placa");
+                    String marca = request.getParameter("marca");
+                    String modelo = request.getParameter("modelo");
+                    String cor = request.getParameter("cor");
+                    String preco = request.getParameter("preco"); 
+                    
+                    double p = Double.parseDouble(preco);
+                    Automovel.addAutomovel(placa, marca, modelo, cor, p);
+                    response.sendRedirect("listar.jsp");
+                    
+                    
+                }
+%>
 <html>
     <head>
         <%@include file="../WEB-INF/links.jspf" %>
@@ -14,8 +32,7 @@
     <body style="padding-bottom: 30px;">
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4"> Cadastrar Veículo </h1>
-        </div> 
-            
+        </div>      
             <form class="container">
                 <div class="form-row">
                     <div class="form-group col-md-6">
