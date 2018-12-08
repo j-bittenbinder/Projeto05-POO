@@ -36,6 +36,18 @@ public class Cliente {
         return cliente;  
     }
 
+    public static void addCliente(String nome, String cpf, String email, String telefone) throws Exception{
+        String sql = "INSERT INTO cliente VALUES("
+                + "default"
+                + ",?"
+                + ",?"
+                + ",?"
+                + ",?)";
+        Object parameters[] = {nome, cpf, email, telefone};
+        
+        DatabaseConncector.execute(sql, parameters);
+    }
+    
     public Cliente(long id_cliente, String nome, String cpf, String email, String telefone) {
         this.id_cliente = id_cliente;
         this.nome = nome;
