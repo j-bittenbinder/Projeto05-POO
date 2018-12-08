@@ -10,3 +10,14 @@ CREATE TABLE automoveis(
 
 
 INSERT INTO automoveis VALUES(default,'102-pcx', 'qualquer', 'qualquer', 'Azul', 35450.00);
+
+DROP TABLE cliente;
+CREATE TABLE cliente(
+            id_cliente BIGINT not null primary key GENERATED always AS IDENTITY (START WITH 1, INCREMENT by 1),
+            nome varchar(100) not null,
+            cpf varchar(15) not null,
+            email varchar(70) not null,
+            telefone varchar(11) not null
+            );
+
+INSERT INTO cliente VALUES(default,'Joao', '123456789', 'joao@joao.com', '34596766');
