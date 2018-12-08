@@ -33,10 +33,9 @@ public class Automovel {
         }  
         return automovel;  
     }
-    public static ArrayList<Automovel> getAutomovel(long id) throws Exception {
-        ArrayList<Automovel> automovel = new ArrayList<>();
+    public static Automovel getAutomovel(long id) throws Exception {
         String SQL = "SELECT * FROM automoveis WHERE ID_AUTOMOVEL = ?";        
-        ArrayList<Object[]> list = DatabaseConncector.getQuery(SQL, new Object[]{});
+        ArrayList<Object[]> list = DatabaseConncector.getQuery(SQL, new Object[]{id});
         
         if(list.isEmpty()){
             return null;
@@ -52,11 +51,8 @@ public class Automovel {
                     (String) row[6],
                     (Double) row[7]);
                     
-            automovel.add(a);  
+            return a; 
         }
-            
-         
-        return automovel;  
     }
     
     public static void addAutomovel(String placa, String renavam, int ano, String marca, String modelo, String cor, Double preco) throws Exception{

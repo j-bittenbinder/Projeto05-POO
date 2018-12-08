@@ -54,7 +54,7 @@
                     <td>
                         <form>
                             <input type="hidden" name="id" value="<%= c.getId_automovel()%>">
-                            <a href="alterarVeiculo.jsp?i=<%= c.getId_automovel()%>"><button type="button" class="btn btn-light">Alterar</button></a>
+                            <a href="alterar.jsp?i=<%= c.getId_automovel()%>"><button type="button" class="btn btn-light">Alterar</button></a>
                             <input type="submit" name="excluir" class="btn btn-dark" value="Excluir">
                         </form>
                     </td>
