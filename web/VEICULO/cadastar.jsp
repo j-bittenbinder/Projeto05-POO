@@ -11,13 +11,15 @@
             String error = null;
                 if (request.getParameter("cadastrar") != null) {
                     String placa = request.getParameter("placa");
+                    String renavam = request.getParameter("renavam");
+                    int ano = Integer.parseInt(request.getParameter("ano"));
                     String marca = request.getParameter("marca");
                     String modelo = request.getParameter("modelo");
                     String cor = request.getParameter("cor");
                     String preco = request.getParameter("preco"); 
                     
                     double p = Double.parseDouble(preco);
-                    Automovel.addAutomovel(placa, marca, modelo, cor, p);
+                    Automovel.addAutomovel(placa,renavam, ano, marca, modelo, cor, p);
                     response.sendRedirect("listar.jsp");
                     
                     
@@ -38,6 +40,14 @@
                     <div class="form-group col-md-6">
                       <label for="inputPlaca">Placa</label>
                       <input type="text" class="form-control" name="placa" placeholder="Placa">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputRenavam">Renavam</label>
+                      <input type="text" class="form-control" name="renavam" placeholder="Renavam">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputAno">Ano</label>
+                      <input type="text" class="form-control" name="ano" placeholder="Ano">
                     </div>
 
                     <div class="form-group col-md-6">

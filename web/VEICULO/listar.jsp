@@ -30,6 +30,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Placa</th>
+                        <th>Renavam</th>
+                        <th>Ano</th>
                         <th>Marca</th>
                         <th>Modelo</th>
                         <th>Cor</th>
@@ -43,6 +45,8 @@
                 <tr>
                     <td><%= c.getId_automovel()%></td>
                     <td><%= c.getPlaca()%></td>
+                    <td><%= c.getRenavam()%></td>
+                    <td><%= c.getAno()%></td>
                     <td><%= c.getMarca()%></td>
                     <td><%= c.getModelo()%></td>
                     <td><%= c.getCor()%></td>
@@ -50,7 +54,7 @@
                     <td>
                         <form>
                             <input type="hidden" name="id" value="<%= c.getId_automovel()%>">
-                            <input type="submit" name="alterar" class="btn btn-dark" value="Alterar">
+                            <a href="alterarVeiculo.jsp?i=<%= c.getId_automovel()%>"><button type="button" class="btn btn-light">Alterar</button></a>
                             <input type="submit" name="excluir" class="btn btn-dark" value="Excluir">
                         </form>
                     </td>
