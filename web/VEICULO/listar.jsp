@@ -7,6 +7,12 @@
 <%@page import="br.com.fatecpg.db.Automovel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%         
+    if (request.getParameter("excluir") != null) {
+        long id = Long.parseLong(request.getParameter("id"));
+        Automovel.removeAutomovel(id);
+    }
+%>
 <html>
     <head>
         <%@include file="../WEB-INF/links.jspf" %>
@@ -42,8 +48,11 @@
                     <td><%= c.getCor()%></td>
                     <td><%= c.getPreco()%></td>
                     <td>
-                        <a href="alterarVeiculo.jsp?i=<%=c%>"><button type="button" class="btn btn-light">Alterar</button></a>
-                        <a href="excluirVeiculo.jsp?i=<%=c%>"><button type="button" class="btn btn-dark">Excluir</button></a>
+                        <form>
+                            <input type="hidden" name="id" value="<%= c.getId_automovel()%>">
+                            <input type="submit" name="alterar" class="btn btn-dark" value="Alterar">
+                            <input type="submit" name="excluir" class="btn btn-dark" value="Excluir">
+                        </form>
                     </td>
                 </tr>
                <%}%>

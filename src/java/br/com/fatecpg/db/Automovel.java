@@ -1,10 +1,6 @@
 
 package br.com.fatecpg.db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Automovel {
@@ -46,8 +42,13 @@ public class Automovel {
         
         DatabaseConncector.execute(sql, parameters);
     }
+    public static void removeAutomovel(long id) throws Exception{
+        String sql = "delete from automoveis where ID_AUTOMOVEL = ?";
+        Object parameters[] = {id};
+        
+        DatabaseConncector.execute(sql, parameters);
     
-    
+    }
 
     public Automovel(long id_automovel, String placa, String marca, String modelo, String cor, Double preco) {
         this.id_automovel = id_automovel;
